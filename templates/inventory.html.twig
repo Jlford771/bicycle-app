@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1>Current Available Inventory</h1>
+    {% if inventory is null %}
+        <p>An error occurred while retrieving the inventory. Please try again later.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Frame</th>
+                    <th>Tires</th>
+                    <th>Brakes</th>
+                    <th>Handlebars</th>
+                    <th>Saddle</th>
+                    <th>Chain</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventory %}
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.frame }}</td>
+                        <td>{{ item.tires }}</td>
+                        <td>{{ item.brakes }}</td>
+                        <td>{{ item.handlebars }}</td>
+                        <td>{{ item.saddle }}</td>
+                        <td>{{ item.chain }}</td>
+                        <td>{{ '$' ~ item.price }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <br/>
+        <a class="btn" href="/">Back</a>
+    {% endif %}
+{% endblock %}
