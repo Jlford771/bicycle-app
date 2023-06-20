@@ -10,6 +10,12 @@ use Psr\Log\LoggerInterface;
 
 class ShopController Extends AbstractController
 {
+    #[Route('/', name: 'home')]
+    public function index(): Response
+    {
+        return $this->render('index.html.twig');
+    }
+
     #[Route('/inventory', name: 'inventory')]
     public function getInventory(LoggerInterface $logger): Response
     {
